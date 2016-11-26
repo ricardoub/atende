@@ -47,10 +47,14 @@
   </div>
 
   <!-- Scripts -->
+  <script
+	  src="http://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
   <script src="/js/app.js"></script>
-  <!-- Scripts -->
   <script>
-    window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
+  window.Laravel = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?>
   </script>
+  @yield('scripts')
 </body>
 </html>
