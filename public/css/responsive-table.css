@@ -18,6 +18,9 @@ table tr {
   border: 1px solid #ddd;
   padding: .35em;
 }
+table tr:nth-child(even) {background: #EFEFEF}
+table tr:nth-child(odd) {background: #FFFFFF}
+
 table tr.seletor{
   background-color: #CCCCCC;
   height: 40px;
@@ -71,6 +74,7 @@ table td img {
     display: block;
     margin-bottom: .625em;
   }
+
   table td {
     border-bottom: 1px solid #ddd;
     display: block;
