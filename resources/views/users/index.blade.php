@@ -34,7 +34,12 @@
               </a>
               <a href="{{ route('users.create') }}" class="btn btn-default" >
                 <i class="fa fa-plus fa-fw"></i>
+<<<<<<< HEAD
+                <span class="hidden-xs hidden-sm">
+                  Incluir
+=======
                 Incluir
+>>>>>>> master
               </a>
               @endif
             </div>
@@ -44,8 +49,11 @@
 
       <div class="panel-body">
         @include('users.table')
+<<<<<<< HEAD
+=======
 
         
+>>>>>>> master
         <div class="text-center">
           {{ $users->render() }}
         </div>
