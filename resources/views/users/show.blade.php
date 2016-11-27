@@ -2,10 +2,8 @@
 
 @section('content')
 <div class="container">
-
   <div class="row">
     <div class="panel panel-default">
-
       <div class="panel-heading">
         <nav class="navbar navbar-default border-0 margin-bottom-0">
           <div class="navbar-header">
@@ -20,45 +18,50 @@
             <!-- Branding Image -->
             <h1 class="margin-top-5">
               <i class="fa fa-user"></i>
-              Usuários
+              Exibir Usuário <small>- {{ $user->name }}</small>
             </h1>
           </div>
 
-          <div class="collapse navbar-collapse" id="app-menu-collapse">
-            <div class="btn-group pull-right margin-top-10" >
-              @if (!Auth::guest())
-              <a href="{{ route('home') }}" class="btn btn-default" >
-                <i class="fa fa-home fa-fw"></i>
+          <div class="btn-group pull-right margin-top-10" >
+            @if (!Auth::guest())
+              <a href="{{ route('users.index') }}" class="btn btn-default" >
+                <i class="fa fa-reply fa-fw"></i>
                 <span class="hidden-xs hidden-sm">
                   Voltar
                 </span>
               </a>
-              <a href="{{ route('users.create') }}" class="btn btn-default" >
-                <i class="fa fa-plus fa-fw"></i>
+              <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default" >
+                <i class="fa fa-edit fa-fw"></i>
                 <span class="hidden-xs hidden-sm">
-                  Incluir
+                  Editar
                 </span>
               </a>
-              @endif
-            </div>
+              <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-default btn-delete" >
+                <i class="fa fa-trash fa-fw"></i>
+                <span class="hidden-xs hidden-sm">
+                  Excluir
+                </span>
+              </a>
+            @endif
           </div>
+
         </nav>
       </div>
 
       <div class="panel-body">
+
         @include('partials.messages')
 
-        @include('users.partials.table')
-        
-        <div class="text-center">
-          {{ $users->render() }}
-        </div>
+        {{ Form::model($user, ['route' => ['users.update', $user->id] ]) }}
+
+          @include('users.partials.form')
+
+        {{ Form::close() }}
       </div>
     </div>
   </div>
 </div>
-@stop
-
+@endsection
 @section('scripts')
-  <script src="/js/users.js"></script>
+  <script src="/js/button-delete.js"></script>
 @stop
