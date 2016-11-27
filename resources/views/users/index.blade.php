@@ -28,6 +28,7 @@
               @if (!Auth::guest())
               <a href="{{ route('home') }}" class="btn btn-default" >
                 <i class="fa fa-home fa-fw"></i>
+<<<<<<< HEAD
                 <span class="hidden-xs hidden-sm">
                   Voltar
                 </span>
@@ -37,6 +38,13 @@
                 <span class="hidden-xs hidden-sm">
                   Incluir
                 </span>
+=======
+                Voltar
+              </a>
+              <a href="{{ route('users.create') }}" class="btn btn-default" >
+                <i class="fa fa-plus fa-fw"></i>
+                Incluir
+>>>>>>> Users
               </a>
               @endif
             </div>
@@ -51,9 +59,15 @@
           <thead>
             <tr>
               <th>ID</th>
+<<<<<<< HEAD
               <th class="col-lg-5 col-md-5">Nome</th>
               <th class="col-lg-5 col-md-4">E-mail</th>
               <th class="col-lg-2 col-md-3 col-sm-2">Ações</th>
+=======
+              <th class="col-md-6">Nome</th>
+              <th class="col-md-5">E-mail</th>
+              <th>Ações</th>
+>>>>>>> Users
             </tr>
           </thead>
           <tbody>
@@ -62,6 +76,7 @@
               <td class="text-right">{{$user->id}}</td>
               <td>{{$user->name}}</td>
               <td >{{$user->email}}</td>
+<<<<<<< HEAD
               <td>
                 <div class="btn-group margin-top-0" >
                   @if (!Auth::guest())
@@ -81,6 +96,18 @@
                 </div>
                 @if (!Auth::guest())
 
+=======
+              <td width="%1" nowrap="nowrap">
+                @if (!Auth::guest())
+                <a href="{{ route('users.update', $user->id) }}" class="btn btn-default btn-xs" >
+                  <i class="fa fa-plus fa-fw"></i>
+                  Alterar
+                </a>
+                <a href="{{ route('users.delete', $user->id) }}" class="btn btn-default btn-xs btn-remover" >
+                  <i class="fa fa-plus fa-fw"></i>
+                  Excluir
+                </a>
+>>>>>>> Users
                 @endif
               </td>
             </tr>
