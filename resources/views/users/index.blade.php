@@ -18,8 +18,8 @@
 
             <!-- Branding Image -->
             <h1 class="margin-top-5">
-              <i class="fa fa-user fa-2x"></i>
-              Listar Usuários
+              <i class="fa fa-user"></i>
+              Usuários
             </h1>
           </div>
 
@@ -27,7 +27,7 @@
             <div class="btn-group pull-right margin-top-10" >
               @if (!Auth::guest())
               <a href="{{ route('home') }}" class="btn btn-default" >
-                <i class="fa fa-plus fa-fw"></i>
+                <i class="fa fa-home fa-fw"></i>
                 Voltar
               </a>
               <a href="{{ route('users.create') }}" class="btn btn-default" >
