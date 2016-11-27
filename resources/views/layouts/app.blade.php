@@ -14,7 +14,7 @@
   <link href="/css/font-awesome.css" rel="stylesheet">
   <link href="/css/app.css" rel="stylesheet">
   <link href="/css/app-class.css" rel="stylesheet">
-
+  <link href="/css/responsive-table.css" rel="stylesheet" >
 </head>
 <body>
   <div id="app">
