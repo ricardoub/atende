@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\UserCreateFormRequest;
+use App\Http\Requests\UserUpdateFormRequest;
 
 use App\User;
 
@@ -40,7 +42,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateFormRequest $request)
     {
         $input = \Request::except('_token');
         extract($input);
@@ -97,7 +99,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateFormRequest $request, $id)
     {
         $input = \Request::only('name', 'email', 'password');
         extract($input);
@@ -114,7 +116,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect()->route('users.edit', $id)->with('msgSuccess', "Usuário atualizado com sucesso!");
+        return redirect()->route('users.show', $id)->with('msgSuccess', "Usuário atualizado com sucesso!");
      }
 
     /**

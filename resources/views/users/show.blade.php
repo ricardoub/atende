@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
-      <div class="panel-heading">
+      <div class="panel-heading padding-bottom-0">
         <nav class="navbar navbar-default border-0 margin-bottom-0">
           <div class="navbar-header">
             <!-- Collapsed Hamburger -->
@@ -16,35 +16,39 @@
             </button>
 
             <!-- Branding Image -->
-            <h1 class="margin-top-5">
+            <h3 class="margin-top-10 margin-bottom-0">
               <i class="fa fa-user"></i>
-              Exibir Usuário <small>- {{ $user->name }}</small>
-            </h1>
+              <span class="hidden-xs hidden-sm">
+                  Exibir Usuário <small>-</small>
+              </span>
+              <small> {{ $user->name }}</small>
+          </h3>
           </div>
 
-          <div class="btn-group pull-right margin-top-10" >
-            @if (!Auth::guest())
-              <a href="{{ route('users.index') }}" class="btn btn-default" >
-                <i class="fa fa-reply fa-fw"></i>
-                <span class="hidden-xs hidden-sm">
-                  Voltar
-                </span>
-              </a>
-              <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default" >
-                <i class="fa fa-edit fa-fw"></i>
-                <span class="hidden-xs hidden-sm">
-                  Editar
-                </span>
-              </a>
-              <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-default btn-delete" >
-                <i class="fa fa-trash fa-fw"></i>
-                <span class="hidden-xs hidden-sm">
-                  Excluir
-                </span>
-              </a>
-            @endif
+          <div class="collapse navbar-collapse" id="app-menu-collapse">
+              <div class="btn-group pull-right margin-top-0" >
+                  @if (!Auth::guest())
+                  <a href="{{ route('users.index') }}" class="btn btn-default" >
+                      <i class="fa fa-reply fa-fw"></i>
+                      <span class="hidden-xs hidden-sm">
+                          Voltar
+                      </span>
+                  </a>
+                  <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default" >
+                      <i class="fa fa-edit fa-fw"></i>
+                      <span class="hidden-xs hidden-sm">
+                          Editar
+                      </span>
+                  </a>
+                  <a href="{{ route('users.destroy', $user->id) }}" class="btn btn-default btn-delete" >
+                      <i class="fa fa-trash fa-fw"></i>
+                      <span class="hidden-xs hidden-sm">
+                          Excluir
+                      </span>
+                  </a>
+                  @endif
+              </div>
           </div>
-
         </nav>
       </div>
 
