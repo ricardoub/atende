@@ -1,6 +1,6 @@
 <div class="text-center">
   <div class="btn-group" >
-    <a href="{{ route("users.index") }}" class="btn btn-default" >
+    <a href="{{ URL::previous() }}" class="btn btn-default" >
       <i class="fa fa-reply fa-fw"></i>
       Cancelar
     </a>
