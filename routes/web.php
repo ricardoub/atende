@@ -20,11 +20,13 @@ Auth::routes();
 Route::get('/home',     ['as' => 'home',   'uses' => 'HomeController@index']);
 
 Route::group(['prefix' => 'usuarios', 'as' => 'users.'], function() {
-  Route::get('',              ['as' => 'index',   'uses' => 'UserController@index']);
-  Route::get('create',        ['as' => 'create',  'uses' => 'UserController@create']);
+  Route::get('',              ['as' => 'index',    'uses' => 'UserController@index']);
+  Route::get('incluir',       ['as' => 'incluir',  'uses' => 'UserController@create']);
+  Route::get('exibir/{id}',   ['as' => 'exibir',   'uses' => 'UserController@show']);
+  Route::get('editar/{id}',   ['as' => 'editar',   'uses' => 'UserController@edit']);
+  Route::get('excluir/{id}',  ['as' => 'excluir',  'uses' => 'UserController@excluir']);
+
   Route::post('store',        ['as' => 'store',   'uses' => 'UserController@store']);
-  Route::get('show/{id}',     ['as' => 'show',    'uses' => 'UserController@show']);
-  Route::get('edit/{id}',     ['as' => 'edit',    'uses' => 'UserController@edit']);
   Route::post('update/{id}',  ['as' => 'update',  'uses' => 'UserController@update']);
-  Route::get('destroy/{id}',  ['as' => 'destroy', 'uses' => 'UserController@destroy']);
+  Route::post('destroy/{id}', ['as' => 'destroy', 'uses' => 'UserController@destroy']);
 });

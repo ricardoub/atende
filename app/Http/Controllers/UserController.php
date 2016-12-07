@@ -22,18 +22,54 @@ class UserController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $formEdit = 'disabled';
+        $user = User::find($id);
+
+        if (is_null($user)) {
+            return redirect()->route('users.index')->withErrors(['Usuário não localizado!']);
+        }
+
+        return view('users.exibir')->with(compact('formEdit','user'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        $disabled = null;
+        $formEdit = null;
         $name = null;
         $email = null;
         $password = null;
         $password_confirmation = null;
-        return view('users.create')->with(compact('disabled','name', 'email', 'password', 'password_confirmation'));
+        return view('users.incluir')->with(compact('formEdit','name', 'email', 'password', 'password_confirmation'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $formEdit = null;
+        $user = User::find($id);
+
+        if (is_null($user)) {
+            return redirect()->route('users.listar')->withErrors(['Usuário não localizado!']);
+        }
+
+        return view('users.editar')->with(compact('formEdit', 'user'));
     }
 
     /**
@@ -57,42 +93,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $disabled = 'disabled';
-        $user = User::find($id);
-
-        if (is_null($user)) {
-            return redirect()->route('users.index')->withErrors(['Usuário não localizado!']);
-        }
-
-        return view('users.show')->with(compact('disabled','user'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $disabled = null;
-        $user = User::find($id);
-
-        if (is_null($user)) {
-            return redirect()->route('users.index')->withErrors(['Usuário não localizado!']);
-        }
-
-        return view('users.edit')->with(compact('disabled', 'user'));
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -106,7 +106,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         if (is_null($user)) {
-            return redirect()->route('users.index')->withErrors(['Usuário não localizado!']);
+            return redirect()->route('users.listar')->withErrors(['Usuário não localizado!']);
         }
 
         $user->name  = $name;
@@ -116,7 +116,7 @@ class UserController extends Controller
         }
         $user->save();
 
-        return redirect()->route('users.show', $id)->with('msgSuccess', "Usuário atualizado com sucesso!");
+        return redirect()->route('users.exibir', $id)->with('msgSuccess', "Usuário atualizado com sucesso!");
      }
 
     /**
@@ -128,7 +128,6 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-
         if (is_null($user)) {
             return redirect()->route('users.index')->withErrors(['Usuário não localizado!']);
         }
