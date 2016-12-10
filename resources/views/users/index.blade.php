@@ -37,9 +37,6 @@
             <div class="panel-body">
                 @include('partials.messages')
                 @include('users.partials.table')
-                <div class="text-center">
-                    {{ $users->render() }}
-                </div>
             </div>
         </div>
     </div>

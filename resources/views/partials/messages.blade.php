@@ -1,16 +1,18 @@
-@if(Session::has('msgSuccess'))
+<div class="row">
+    @if(Session::has('msgSuccess'))
     <div class="alert alert-success alert-dismissible">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
         {{ Session::get('msgSuccess') }}
     </div>
-@endif
+    @endif
 
-@if(count($errors->all()) > 0)
+    @if(count($errors->all()) > 0)
     <div class="alert alert-danger alert-dismissible">
         <ul>
             @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
+</div>
